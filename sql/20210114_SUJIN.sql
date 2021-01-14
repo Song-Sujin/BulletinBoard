@@ -1,0 +1,87 @@
+SELECT USER
+FROM DUAL;
+
+-- 게시판 만들기
+
+/*
+목록에서 노출될 정보
+번호, 제목, 작성자, 작성일, 조회수
+
+등록 시 필요한 정보
+제목, 내용, 작성자
+
+상세페이지에서 필요한 정보
+번호, 작성자, 제목, 내용, 작성일, 조회수
+*/
+
+-- 테이블 생성
+CREATE TABLE TBL_BOARD
+( NO NUMBER
+, WRITER VARCHAR2(20) 
+, TITLE VARCHAR2(500)
+, CONTENT VARCHAR2(4000)
+, CRT_DATE DATE
+, HITS NUMBER
+);
+
+-- 시퀀스 생성
+CREATE SEQUENCE SEQ_BOARD
+INCREMENT BY 1
+START WITH 1
+NOMAXVALUE
+NOCACHE
+;
+
+-- 더미 데이터 생성
+INSERT INTO TBL_BOARD(NO, WRITER, TITLE, CONTENT, CRT_DATE, HITS)
+VALUES(SEQ_BOARD.NEXTVAL, '홍길동', '첫 번째 게시글입니다.', '첫 번째 게시글의 내용입니다.', SYSDATE, 1);
+INSERT INTO TBL_BOARD(NO, WRITER, TITLE, CONTENT, CRT_DATE, HITS)
+VALUES(SEQ_BOARD.NEXTVAL, '고길동', '두 번째 게시글입니다.', '두 번째 게시글의 내용입니다.', SYSDATE, 1);
+INSERT INTO TBL_BOARD(NO, WRITER, TITLE, CONTENT, CRT_DATE, HITS)
+VALUES(SEQ_BOARD.NEXTVAL, '송수진', '세 번째 게시글입니다.', '세 번째 게시글의 내용입니다.', SYSDATE, 1);
+INSERT INTO TBL_BOARD(NO, WRITER, TITLE, CONTENT, CRT_DATE, HITS)
+VALUES(SEQ_BOARD.NEXTVAL, '김수진', '네 번째 게시글입니다.', '네 번째 게시글의 내용입니다.', SYSDATE, 1);
+INSERT INTO TBL_BOARD(NO, WRITER, TITLE, CONTENT, CRT_DATE, HITS)
+VALUES(SEQ_BOARD.NEXTVAL, '유재석', '다섯 번째 게시글입니다.', '다섯 번째 게시글의 내용입니다.', SYSDATE, 1);
+INSERT INTO TBL_BOARD(NO, WRITER, TITLE, CONTENT, CRT_DATE, HITS)
+VALUES(SEQ_BOARD.NEXTVAL, '조세호', '여섯 번째 게시글입니다.', '여섯 번째 게시글의 내용입니다.', SYSDATE, 1);
+INSERT INTO TBL_BOARD(NO, WRITER, TITLE, CONTENT, CRT_DATE, HITS)
+VALUES(SEQ_BOARD.NEXTVAL, '김종국', '일곱 번째 게시글입니다.', '일곱 번째 게시글의 내용입니다.', SYSDATE, 1);
+INSERT INTO TBL_BOARD(NO, WRITER, TITLE, CONTENT, CRT_DATE, HITS)
+VALUES(SEQ_BOARD.NEXTVAL, '박지성', '여덟 번째 게시글입니다.', '여덟 번째 게시글의 내용입니다.', SYSDATE, 1);
+INSERT INTO TBL_BOARD(NO, WRITER, TITLE, CONTENT, CRT_DATE, HITS)
+VALUES(SEQ_BOARD.NEXTVAL, '김연아', '아홉 번째 게시글입니다.', '아홉 번째 게시글의 내용입니다.', SYSDATE, 1);
+INSERT INTO TBL_BOARD(NO, WRITER, TITLE, CONTENT, CRT_DATE, HITS)
+VALUES(SEQ_BOARD.NEXTVAL, '박명수', '열 번째 게시글입니다.', '열 번째 게시글의 내용입니다.', SYSDATE, 1);
+INSERT INTO TBL_BOARD(NO, WRITER, TITLE, CONTENT, CRT_DATE, HITS)
+VALUES(SEQ_BOARD.NEXTVAL, '정형돈', '열 한 번째 게시글입니다.', '열 한 번째 게시글의 내용입니다.', SYSDATE, 1);
+INSERT INTO TBL_BOARD(NO, WRITER, TITLE, CONTENT, CRT_DATE, HITS)
+VALUES(SEQ_BOARD.NEXTVAL, '박주영', '열 두 번째 게시글입니다.', '열 두 번째 게시글의 내용입니다.', SYSDATE, 1);
+INSERT INTO TBL_BOARD(NO, WRITER, TITLE, CONTENT, CRT_DATE, HITS)
+VALUES(SEQ_BOARD.NEXTVAL, '최보윤', '열 세 번째 게시글입니다.', '열 세 번째 게시글의 내용입니다.', SYSDATE, 1);
+INSERT INTO TBL_BOARD(NO, WRITER, TITLE, CONTENT, CRT_DATE, HITS)
+VALUES(SEQ_BOARD.NEXTVAL, '황석주', '열 네 번째 게시글입니다.', '열 네 번째 게시글의 내용입니다.', SYSDATE, 1);
+
+COMMIT;
+
+-- 테이블 조회
+SELECT *
+FROM TBL_BOARD
+ORDER BY NO;
+
+-- 전체 리스트 조회
+SELECT NO, WRITER, TITLE, CRT_DATE, HITS
+FROM TBL_BOARD;
+
+-- 상세 페이지 조회
+SELECT NO, WRITER, TITLE, CONTENT, CRT_DATE, HITS
+FROM TBL_BOARD
+WHERE NO = 1;
+
+-- 전체 게시글 수 조회
+SELECT COUNT(*)
+FROM TBL_BOARD;
+
+
+
+
