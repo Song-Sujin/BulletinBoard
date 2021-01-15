@@ -82,6 +82,9 @@ WHERE NO = 1;
 SELECT COUNT(*)
 FROM TBL_BOARD;
 
+-- 게시글 등록
+INSERT INTO TBL_BOARD(NO, WRITER, TITLE, CONTENT, CRT_DATE, HITS)
+VALUES(SEQ_BOARD.NEXTVAL, '황석주', '열 네 번째 게시글입니다.', '열 네 번째 게시글의 내용입니다.', SYSDATE, 1);
 
 
 

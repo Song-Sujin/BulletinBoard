@@ -28,6 +28,10 @@
 	</select>
 	
 	<!-- 게시글 등록 -->
+	<insert id="insertItem" parameterType="study.spring.bulletinboard.model.Board" useGeneratedKeys="true" keyProperty="profno">
+		INSERT INTO TBL_BOARD(NO, WRITER, TITLE, CONTENT, CRT_DATE, HITS)
+		VALUES(SEQ_BOARD.NEXTVAL, #{writer}, #{title}, #{content}, SYSDATE, #{hits})
+	</insert>
 	
 	<!-- 전체 게시글 수 조회 -->
 	<select id="selectCountAll" parameterType="study.spring.bulletinboard.model.Board" resultType="int">

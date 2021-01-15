@@ -42,9 +42,11 @@
 				<div class="row">
 					<div class="col-md-2"></div>
 					<div class="col-md-8">
-						<button type="button" class="btn btn-primary"
+						<button type="button" class="btn btn-default"
 							onclick="location.href='${pageContext.request.contextPath}/board/list.do'">목록</button>
-						<button type="button" class="btn btn-primary"
+						<button type="reset" class="btn btn-default"
+							onclick="location.href='${pageContext.request.contextPath}/board/add_ok.do'">다시작성</button>
+						<button type="submit" class="btn btn-primary"
 							onclick="location.href='${pageContext.request.contextPath}/board/add_ok.do'">등록</button>
 							
 					</div>
