@@ -83,6 +83,7 @@ public class BoardController
 		try
 		{
 			// 데이터 저장
+			// 저장 성공하면 input 객체에 pk값인 no가 저장됨 -> DB에 PK값 지정하기
 			boardService.addBoard(input);
 			
 		} catch (Exception e)
@@ -91,9 +92,9 @@ public class BoardController
 		}
 		
 		// 등록한 게시물을 확인하는 상세 페이지 이동
-		
-		
-		return null;
+		// 저장 결과를 확인하기 위해서 pk값을 상세 페이지로 전달
+		String redirectUrl = contextPath + "/board/view.do?no=" + input.getNo();
+		return webHelper.redirect(redirectUrl, "저장되었습니다.");
 	}
 	
 	// 게시글 수정 폼 페이지
