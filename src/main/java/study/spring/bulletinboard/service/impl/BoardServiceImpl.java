@@ -17,12 +17,32 @@ public class BoardServiceImpl implements BoardService
 	// Mybatis
 	@Autowired
 	SqlSession sqlSession;
-	
+
+	// 리스트 조회
 	@Override
 	public List<Board> getBoardList(Board input) throws Exception
 	{
-		// TODO Auto-generated method stub
-		return null;
+		List<Board> result = null;
+
+		try
+		{
+			result = sqlSession.selectList("BoardMapper.selectList", input);
+			
+			if(result == null)
+			{
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e)
+		{
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e)
+		{
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
 	}
 
 	@Override
@@ -32,20 +52,21 @@ public class BoardServiceImpl implements BoardService
 		return null;
 	}
 
+	// 게시글 등록
 	@Override
 	public int addBoard(Board input) throws Exception
 	{
 		int result = 0;
-		
+
 		try
 		{
-			result = sqlSession.insert("BoardMapper.insertItem", input);	// mapper의 등록 sql 부르기
-			
-			if(result == 0)
+			result = sqlSession.insert("BoardMapper.insertItem", input); // mapper의 등록 sql 부르기
+
+			if (result == 0)
 			{
 				throw new NullPointerException("result=0");
 			}
-			
+
 		} catch (NullPointerException e)
 		{
 			log.error(e.getLocalizedMessage());
@@ -55,7 +76,7 @@ public class BoardServiceImpl implements BoardService
 			log.error(e.getLocalizedMessage());
 			throw new Exception("데이터 저장에 실패했습니다.");
 		}
-		
+
 		return result;
 	}
 
