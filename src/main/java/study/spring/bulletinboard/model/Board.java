@@ -36,5 +36,28 @@ public class Board
 	{
 		Board.listCount = listCount;
 	}
+	
+	private static int start;
+	private static int end;
+
+	public static int getStart()
+	{
+		return start;
+	}
+
+	public static void setStart(int start)
+	{
+		Board.start = start;
+	}
+
+	public static int getEnd()
+	{
+		return end;
+	}
+
+	public static void setEnd(int end)
+	{
+		Board.end = end;
+	}
 
 }

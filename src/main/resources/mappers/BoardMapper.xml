@@ -16,32 +16,64 @@
 	
 	<!-- 리스트 조회 -->
 	<select id="selectList" parameterType="study.spring.bulletinboard.model.Board" resultMap="boardMap">
-		SELECT NO, WRITER, TITLE, CRT_DATE, HITS
-		FROM TBL_BOARD
+		SELECT NO, TITLE, WRITER, CRT_DATE, HITS
+		FROM
+		(
+		    SELECT ROWNUM, DATA.*
+		    FROM
+		    (
+		        SELECT NO, WRITER, TITLE, TO_CHAR(CRT_DATE, 'YYYY-MM-DD HH:MI') AS CRT_DATE, HITS
+		        FROM TBL_BOARD
+		        
+		        <where>
+		        	<if test="title != null and title != ''">
+		        		WHERE TITLE LIKE '%#{title, jdbcType=VARCHAR}%'
+		        	</if>
+		        </where>
+		        ORDER BY NO DESC
+		    )DATA
+		)
 	</select>
 	
 	<!-- 상세 페이지 조회 -->
 	<select id="selectItem" parameterType="study.spring.bulletinboard.model.Board" resultMap="boardMap">
-		SELECT NO, WRITER, TITLE, CONTENT, CRT_DATE, HITS
+		SELECT NO, WRITER, TITLE, CONTENT, TO_CHAR(CRT_DATE, 'YYYY-MM-DD HH:MI') AS CRT_DATE, HITS
 		FROM TBL_BOARD
 		WHERE NO = #{no}
 	</select>
 	
 	<!-- 게시글 등록 -->
-	<insert id="insertItem" parameterType="study.spring.bulletinboard.model.Board" useGeneratedKeys="true" keyProperty="profno">
+	<!-- <insert id="insertItem" parameterType="study.spring.bulletinboard.model.Board" useGeneratedKeys="true" keyProperty="no"> -->
+	<insert id="insertItem" parameterType="study.spring.bulletinboard.model.Board">
 		INSERT INTO TBL_BOARD(NO, WRITER, TITLE, CONTENT, CRT_DATE, HITS)
-		VALUES(SEQ_BOARD.NEXTVAL, #{writer}, #{title}, #{content}, SYSDATE, #{hits})
+		VALUES(SEQ_BOARD.NEXTVAL, #{writer}, #{title}, #{content}, SYSDATE, 1)
 	</insert>
 	
 	<!-- 전체 게시글 수 조회 -->
 	<select id="selectCountAll" parameterType="study.spring.bulletinboard.model.Board" resultType="int">
 		SELECT COUNT(*)
 		FROM TBL_BOARD
+		
+		<where>
+        	<if test="title != null and title != ''">
+        		WHERE TITLE LIKE '%#{title, jdbcType=VARCHAR}%'
+        	</if>
+        </where>
 	</select>
 	
 	<!-- 게시글 수정 -->
+	<update id="updateItem" parameterType="study.spring.bulletinboard.model.Board">
+		UPDATE TBL_BOARD
+		SET TITLE = #{title}, CONTENT = #{content}, WRITER = #{writer}
+		WHERE NO = #{no}
+	</update>
 	
 	<!-- 게시글 삭제 -->
+	<delete id="deleteItem" parameterType="study.spring.bulletinboard.model.Board">
+		DELETE
+		FROM TBL_BOARD
+		WHERE NO=#{no}
+	</delete>
 	
 </mapper>
 
