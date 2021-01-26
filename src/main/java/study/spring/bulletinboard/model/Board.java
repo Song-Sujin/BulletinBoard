@@ -12,7 +12,8 @@ public class Board
 	private String content;
 	private String crt_date;
 	private int hits;
-
+	
+	/*
 	// 페이지 구현을 위한 static 변수
 	private static int offset;
 	private static int listCount;
@@ -36,6 +37,7 @@ public class Board
 	{
 		Board.listCount = listCount;
 	}
+	*/
 	
 	private static int start;
 	private static int end;

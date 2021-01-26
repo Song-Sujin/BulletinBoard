@@ -3,6 +3,7 @@ package study.spring.bulletinboard.helper;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
+// 페이징 처리 나중에 하기
 @Data
 @Slf4j
 public class PageData

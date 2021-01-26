@@ -42,10 +42,11 @@ public class BoardController
 			// 페이지 구현에서 사용할 현재 페이지 번호
 			@RequestParam(value="page", defaultValue="1") int nowPage)
 	{
+		/*
 		// 1) 페이지 구현에 필요한 변수값 생성
 		MyUtil util = new MyUtil();
 		int currentPage = 1;
-		
+		*/
 		
 		// 2) 데이터 조회하기
 		Board input = new Board();
