@@ -255,5 +255,42 @@ public class BoardController
 		// 페이지 이동
 		return webHelper.redirect(contextPath + "/board/list.do", "delete success.");
 	}
+	
+	// ----------- 구글 차트 추가 ------------
+	// 차트 목록
+	@RequestMapping(value="/board/static.do", method=RequestMethod.GET)
+	public ModelAndView static_view(Model model)
+	{
+		return new ModelAndView("board/static");
+	}
+	
+	// 컬럼 차트
+	@RequestMapping(value="/board/static_column.do", method=RequestMethod.GET)
+	public ModelAndView static_column(Model model)
+	{
+		return new ModelAndView("board/static_column");
+	}
+	
+	// 파이 차트
+	@RequestMapping(value="/board/static_pi.do", method=RequestMethod.GET)
+	public ModelAndView static_pi(Model model)
+	{
+		return new ModelAndView("board/static_pi");
+	}
+	
+	// 산점도 차트
+	@RequestMapping(value="/board/static_scatter.do", method=RequestMethod.GET)
+	public ModelAndView static_scatter(Model model)
+	{
+		return new ModelAndView("board/static_scatter");
+	}
+
+	// ----------- c3.js 추가 ------------
+	@RequestMapping(value="/board/c3_line.do", method=RequestMethod.GET)
+	public ModelAndView c3_line(Model model)
+	{
+		return new ModelAndView("board/c3_line");
+	}
+	
 
 }

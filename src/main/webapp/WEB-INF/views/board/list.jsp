@@ -11,6 +11,8 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 </head>
 <body>
 
@@ -18,7 +20,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<h1>게시판 목록</h1>
-				
+				<button type="button" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/board/static.do'">게시판 통계 보러가기</button>
 				<div class="row">
 					<div class="col-md-2"></div>
 					<div class="col-md-8">
