@@ -258,31 +258,31 @@ public class BoardController
 	
 	// ----------- 구글 차트 추가 ------------
 	// 차트 목록
-	@RequestMapping(value="/board/static.do", method=RequestMethod.GET)
+	@RequestMapping(value="/board/statistics.do", method=RequestMethod.GET)
 	public ModelAndView static_view(Model model)
 	{
-		return new ModelAndView("board/static");
+		return new ModelAndView("board/statistics");
 	}
 	
 	// 컬럼 차트
-	@RequestMapping(value="/board/static_column.do", method=RequestMethod.GET)
+	@RequestMapping(value="/board/google_column.do", method=RequestMethod.GET)
 	public ModelAndView static_column(Model model)
 	{
-		return new ModelAndView("board/static_column");
+		return new ModelAndView("board/google_column");
 	}
 	
 	// 파이 차트
-	@RequestMapping(value="/board/static_pi.do", method=RequestMethod.GET)
+	@RequestMapping(value="/board/google_pi.do", method=RequestMethod.GET)
 	public ModelAndView static_pi(Model model)
 	{
-		return new ModelAndView("board/static_pi");
+		return new ModelAndView("board/google_pi");
 	}
 	
 	// 산점도 차트
-	@RequestMapping(value="/board/static_scatter.do", method=RequestMethod.GET)
+	@RequestMapping(value="/board/google_scatter.do", method=RequestMethod.GET)
 	public ModelAndView static_scatter(Model model)
 	{
-		return new ModelAndView("board/static_scatter");
+		return new ModelAndView("board/google_scatter");
 	}
 
 	// ----------- c3.js 추가 ------------

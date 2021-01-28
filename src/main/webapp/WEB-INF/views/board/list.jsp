@@ -20,7 +20,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<h1>게시판 목록</h1>
-				<button type="button" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/board/static.do'">게시판 통계 보러가기</button>
+				<button type="button" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/board/statistics.do'">게시판 통계 보러가기</button>
 				<div class="row">
 					<div class="col-md-2"></div>
 					<div class="col-md-8">

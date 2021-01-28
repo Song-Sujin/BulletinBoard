@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>static_column.jsp</title>
+<title>google_scatter.jsp</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <script
@@ -14,35 +14,42 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
 
-	google.charts.load('current', {'packages' : [ 'bar' ]});
+
+	google.charts.load('current', {
+		'packages' : [ 'corechart' ]
+	});
 	google.charts.setOnLoadCallback(drawChart);
 
 	function drawChart() {
-		var data = google.visualization.arrayToDataTable([
-				[ '날짜', '직접유입', '기타유입' ], 
-				[ '10일', 2, 4 ], 
-				[ '11일', 7, 1 ],
-				[ '12일', 4, 3 ], 
-				[ '13일', 10, 3 ], 
-				[ '14일', 8, 6 ],
-				[ '15일', 6, 8 ], 
-				[ '16일', 9, 8 ], 
-				[ '17일', 4, 2 ] 
-				]);
+		var data = google.visualization.arrayToDataTable([ 
+			[ '나이', '게시글 수' ],
+			[ 8, 12 ], 
+			[ 4, 5.5 ], 
+			[ 11, 14 ], 
+			[ 4, 5 ], 
+			[ 3, 3.5 ],
+			[ 6.5, 7 ] ]);
 
 		var options = {
-			chart : {
-				title : '일별 통계',
-				subtitle : '',
-			}
+			title : '나이별 게시글 수 통계',
+			hAxis : {
+				title : '나이',
+				minValue : 0,
+				maxValue : 15
+			},
+			vAxis : {
+				title : '게시글 수',
+				minValue : 0,
+				maxValue : 15
+			},
+			legend : 'none'
 		};
 
-		var chart = new google.charts.Bar(document
-				.getElementById('columnchart_material'));
+		var chart = new google.visualization.ScatterChart(document
+				.getElementById('chart_div'));
 
-		chart.draw(data, google.charts.Bar.convertOptions(options));
+		chart.draw(data, options);
 	}
-	
 </script>
 </head>
 <body>
@@ -52,12 +59,12 @@
 			<div class="col-md-12">
 			<br />
 				<button type="button" class="btn btn-default"
-							onclick="location.href='${pageContext.request.contextPath}/board/static.do'">통계 목록으로</button>
+							onclick="location.href='${pageContext.request.contextPath}/board/statistics.do'">통계 목록으로</button>
 				<div class="row">
 					<div class="col-md-2"></div>
 					<div class="col-md-8">
 						<br />
-						<div id="columnchart_material" style="width: 800px; height: 500px;"></div>
+						<div id="chart_div" style="width: 800px; height: 500px;"></div>
 						
 					</div>
 					<div class="col-md-2"></div>

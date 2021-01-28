@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>static_scatter.jsp</title>
+<title>google_pi.jsp</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <script
@@ -15,40 +15,27 @@
 <script type="text/javascript">
 
 
+	//구글차트 
 	google.charts.load('current', {
 		'packages' : [ 'corechart' ]
 	});
 	google.charts.setOnLoadCallback(drawChart);
-
 	function drawChart() {
-		var data = google.visualization.arrayToDataTable([ 
-			[ '나이', '게시글 수' ],
-			[ 8, 12 ], 
-			[ 4, 5.5 ], 
-			[ 11, 14 ], 
-			[ 4, 5 ], 
-			[ 3, 3.5 ],
-			[ 6.5, 7 ] ]);
+		var data = new google.visualization.DataTable();
+		data.addColumn('string', 'Foods');
+		data.addColumn('number', '비중');
 
-		var options = {
-			title : '나이별 게시글 수 통계',
-			hAxis : {
-				title : '나이',
-				minValue : 0,
-				maxValue : 15
-			},
-			vAxis : {
-				title : '게시글 수',
-				minValue : 0,
-				maxValue : 15
-			},
+		data.addRows([ [ '남자', 3 ], [ '여자', 7 ] ]);
+		var opt = {
+			'title' : '성별별 통계',
+			'width' : 500,
+			'height' : 500,
+			pieSliceText : 'label',
 			legend : 'none'
 		};
-
-		var chart = new google.visualization.ScatterChart(document
-				.getElementById('chart_div'));
-
-		chart.draw(data, options);
+		var chart = new google.visualization.PieChart(document
+				.getElementById('myChart'));
+		chart.draw(data, opt);
 	}
 </script>
 </head>
@@ -59,12 +46,12 @@
 			<div class="col-md-12">
 			<br />
 				<button type="button" class="btn btn-default"
-							onclick="location.href='${pageContext.request.contextPath}/board/static.do'">통계 목록으로</button>
+							onclick="location.href='${pageContext.request.contextPath}/board/statistics.do'">통계 목록으로</button>
 				<div class="row">
 					<div class="col-md-2"></div>
 					<div class="col-md-8">
 						<br />
-						<div id="chart_div" style="width: 800px; height: 500px;"></div>
+						<div id="myChart" style="width: 800px; height: 500px;"></div>
 						
 					</div>
 					<div class="col-md-2"></div>

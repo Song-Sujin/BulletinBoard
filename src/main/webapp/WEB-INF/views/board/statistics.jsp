@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>static.jsp</title>
+<title>statistics.jsp</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <script
@@ -58,9 +58,10 @@
 					<div class="col-md-8">
 						<br />
 						<h4>구글 차트 이용하기</h4>
-						<a href="${pageContext.request.contextPath }/board/static_column.do">1. 일별 통계</a><br />
-						<a href="${pageContext.request.contextPath }/board/static_pi.do">2. 성별별 통계</a><br />
-						<a href="${pageContext.request.contextPath }/board/static_scatter.do">3. 나이별 게시글 수 통계</a><br />
+						<a href="${pageContext.request.contextPath }/board/google_column.do">1. 일별 통계 컬럼</a><br />
+						<a href="${pageContext.request.contextPath }/board/google_line.do">2. 일별 통계 라인</a><br />
+						<a href="${pageContext.request.contextPath }/board/google_pi.do">2. 성별별 통계</a><br />
+						<a href="${pageContext.request.contextPath }/board/google_scatter.do">3. 나이별 게시글 수 통계</a><br />
 						
 						<br />
 						<h4>C3.js 이용하기</h4>
