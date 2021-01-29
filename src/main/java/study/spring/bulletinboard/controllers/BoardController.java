@@ -259,28 +259,35 @@ public class BoardController
 	// ----------- 구글 차트 추가 ------------
 	// 차트 목록
 	@RequestMapping(value="/board/statistics.do", method=RequestMethod.GET)
-	public ModelAndView static_view(Model model)
+	public ModelAndView statistics_view(Model model)
 	{
 		return new ModelAndView("board/statistics");
 	}
 	
 	// 컬럼 차트
 	@RequestMapping(value="/board/google_column.do", method=RequestMethod.GET)
-	public ModelAndView static_column(Model model)
+	public ModelAndView google_column(Model model)
 	{
 		return new ModelAndView("board/google_column");
 	}
 	
+	// 라인 차트
+	@RequestMapping(value="/board/google_line.do", method=RequestMethod.GET)
+	public ModelAndView google_line(Model model)
+	{
+		return new ModelAndView("board/google_line");
+	}
+	
 	// 파이 차트
 	@RequestMapping(value="/board/google_pi.do", method=RequestMethod.GET)
-	public ModelAndView static_pi(Model model)
+	public ModelAndView google_pi(Model model)
 	{
 		return new ModelAndView("board/google_pi");
 	}
 	
 	// 산점도 차트
 	@RequestMapping(value="/board/google_scatter.do", method=RequestMethod.GET)
-	public ModelAndView static_scatter(Model model)
+	public ModelAndView google_scatter(Model model)
 	{
 		return new ModelAndView("board/google_scatter");
 	}
