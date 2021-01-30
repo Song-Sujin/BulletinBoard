@@ -36,32 +36,32 @@
 	</div>
 
 <script type="text/javascript">
-google.charts.load('current', {packages: ['corechart', 'line']});
-google.charts.setOnLoadCallback(drawBasic);
 
-function drawBasic() {
+	// 구글 api사용을 위한 기본 세팅
+	google.charts.load('current', {	'packages' : [ 'corechart' ]});
+	google.charts.setOnLoadCallback(drawChart);
+		
+	function drawChart() {
+		
+		var data = google.visualization.arrayToDataTable([
+				[ '날짜', 'Direct', 'Others' ],
+				[ '1월10일', 8, 3 ],
+				[ '1월10일', 8, 2 ],
+				[ '1월10일', 5, 3 ]
+				]);
 
-      var data = new google.visualization.DataTable();
-      data.addColumn('number', 'X');		// 테이블에 노출되는 컬럼 추가하기. 타입, 
-      data.addColumn('number', 'Dogs');
+		var options = {
+			title : '라인차트 DB연동',
+			legend : {
+				position : 'bottom'
+			}
+		};
 
-      data.addRows([
-        [0, 0],   [1, 10],  [2, 23],  [3, 17],  [4, 18],  [5, 9]
-      ]);
+		var chart = new google.visualization.LineChart(document
+				.getElementById('chart_div'));
 
-      var options = {
-        hAxis: {		// 가로축 정의
-          title: 'Time'
-        },
-        vAxis: {		// 세로축 정의
-          title: 'Popularity'
-        }
-      };
-
-      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-
-      chart.draw(data, options);
-    }
+		chart.draw(data, options);
+	}
 </script>
 </body>
 

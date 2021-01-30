@@ -11,11 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import study.spring.bulletinboard.helper.MyUtil;
-import study.spring.bulletinboard.helper.PageData;
 import study.spring.bulletinboard.helper.RegexHelper;
 import study.spring.bulletinboard.helper.WebHelper;
 import study.spring.bulletinboard.model.Board;
+import study.spring.bulletinboard.model.Chart;
 import study.spring.bulletinboard.service.BoardService;
 
 @Controller
@@ -275,6 +274,26 @@ public class BoardController
 	@RequestMapping(value="/board/google_line.do", method=RequestMethod.GET)
 	public ModelAndView google_line(Model model)
 	{
+		List<Chart> output = null;
+		
+		try
+		{
+			System.out.println(55555);
+			output = boardService.getLineList();
+			System.out.println(66666);
+			System.out.println(output.size());
+			for(int i=0;i<output.size();i++)
+			{
+				System.out.println(6666 + output.get(i).getVisit_date());
+			}
+		} catch (Exception e)
+		{
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		// 3) View 처리
+		model.addAttribute("output", output);
+		
 		return new ModelAndView("board/google_line");
 	}
 	

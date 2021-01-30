@@ -14,6 +14,13 @@
 		<result property="hits" column="hits" />
 	</resultMap>
 	
+	<!-- Chart.java의 멤버변수와 대상 테이블의 컬럼 연결 -->
+	<resultMap type="study.spring.bulletinboard.model.Chart" id="chartMap">
+		<result property="visit_date" column="visit_date" />
+		<result property="visit_direct" column="visit_direct" />
+		<result property="visit_others" column="visit_others" />
+	</resultMap>
+	
 	<!-- 리스트 조회 -->
 	<select id="selectList" parameterType="study.spring.bulletinboard.model.Board" resultMap="boardMap">
 		SELECT NO, TITLE, WRITER, CRT_DATE, HITS
@@ -74,6 +81,12 @@
 		FROM TBL_BOARD
 		WHERE NO=#{no}
 	</delete>
+	
+	<!-- 라인 차트 정보 조회 -->
+	<select id="selectLine" parameterType="study.spring.bulletinboard.model.Chart" resultMap="chartMap">
+		SELECT VISIT_DATE, VISIT_DIRECT, VISIT_OTHERS
+		FROM TBL_VISIT
+	</select>
 	
 </mapper>
 

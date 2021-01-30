@@ -3,6 +3,7 @@ package study.spring.bulletinboard.service;
 import java.util.List;
 
 import study.spring.bulletinboard.model.Board;
+import study.spring.bulletinboard.model.Chart;
 
 // 구현해야 하는 기능들
 public interface BoardService
@@ -24,5 +25,8 @@ public interface BoardService
 	
 	// 게시글 삭제
 	public int deleteBoard(Board input) throws Exception;
+
+	// 라인 차트
+	public List<Chart> getLineList() throws Exception;
 
 }
