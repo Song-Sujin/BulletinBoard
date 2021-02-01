@@ -25,7 +25,7 @@
 	function drawChart() {
 		
 		// DB연동하여 ajax로 데이터 가져오기
-		
+		/*
 		var jsonData = $.ajax({
 			type: "POST",
 			url: "${pageContext.request.contextPath}/board/google_line_ok.do",
@@ -40,6 +40,7 @@
 				alert(e.responseText + "에러발생");
 			}
 		}).responseText;
+		*/
 		
 		//alert(${str});
 		var data = new google.visualization.arrayToDataTable(${str});

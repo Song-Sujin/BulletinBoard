@@ -283,16 +283,9 @@ public class BoardController
 		
 		try
 		{
-			System.out.println(55555);
 			output = boardService.getLineList();
 			mav.addObject("output", output);
 			mav.setViewName("board/google_line");
-			
-			System.out.println("리스트사이즈:" + output.size());
-			for(int i=0;i<output.size();i++)
-			{
-				System.out.println(output.get(i).getVisit_date());
-			}
 			
 			String str = "[";
 			str += "['날짜', 'direct', 'others'],";
