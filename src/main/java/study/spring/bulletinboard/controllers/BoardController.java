@@ -1,6 +1,8 @@
 package study.spring.bulletinboard.controllers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import study.spring.bulletinboard.helper.RegexHelper;
@@ -274,29 +277,50 @@ public class BoardController
 	@RequestMapping(value="/board/google_line.do", method=RequestMethod.GET)
 	public ModelAndView google_line(Model model)
 	{
+		ModelAndView mav = new ModelAndView();
+		
 		List<Chart> output = null;
 		
 		try
 		{
 			System.out.println(55555);
 			output = boardService.getLineList();
-			System.out.println(66666);
-			System.out.println(output.size());
+			mav.addObject("output", output);
+			mav.setViewName("board/google_line");
+			
+			System.out.println("리스트사이즈:" + output.size());
 			for(int i=0;i<output.size();i++)
 			{
-				System.out.println(6666 + output.get(i).getVisit_date());
+				System.out.println(output.get(i).getVisit_date());
 			}
+			
+			String str = "[";
+			str += "['날짜', 'direct', 'others'],";
+			int num = 0;
+			for(Chart dto : output)
+			{
+				str += "['";
+				str += dto.getVisit_date();
+				str += "', ";
+				str += dto.getVisit_direct();
+				str += ", ";
+				str += dto.getVisit_others();
+				str += "]";
+				
+				num++;
+				if(num<output.size())
+					str += ",";
+			}
+			str += "]";
+			mav.addObject("str", str);
+			
 		} catch (Exception e)
 		{
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-		
-		// 3) View 처리
-		model.addAttribute("output", output);
-		
-		return new ModelAndView("board/google_line");
+		return mav;
 	}
-	
+
 	// 파이 차트
 	@RequestMapping(value="/board/google_pi.do", method=RequestMethod.GET)
 	public ModelAndView google_pi(Model model)

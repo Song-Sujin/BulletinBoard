@@ -30,6 +30,22 @@
       <property name="password" value="sj1744"></property>
    </bean>
    
+	<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+	<property name="supportedMediaTypes">
+		<list>
+			<value>text/html; charset=UTF-8</value>
+		</list>
+	</property>
+	</bean>
+
+	<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>application/json; charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+   
    <!-- SQLSessionFactory 객체 생성 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<!-- JDBC 객체를 dataSource에 대한 setter 메서드를 통해 주입 -->

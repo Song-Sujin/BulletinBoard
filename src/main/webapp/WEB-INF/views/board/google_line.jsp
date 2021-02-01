@@ -16,7 +16,46 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
+<script type="text/javascript">
 
+	// 구글 api사용을 위한 기본 세팅
+	google.charts.load('current', {	'packages' : [ 'corechart' ]});
+	google.charts.setOnLoadCallback(drawChart);
+	
+	function drawChart() {
+		
+		// DB연동하여 ajax로 데이터 가져오기
+		
+		var jsonData = $.ajax({
+			type: "POST",
+			url: "${pageContext.request.contextPath}/board/google_line_ok.do",
+			dataType: "json",
+			async: false,
+			success: function(data)
+			{
+				alert(data + "성공");
+			},
+			error: function(e)
+			{
+				alert(e.responseText + "에러발생");
+			}
+		}).responseText;
+		
+		//alert(${str});
+		var data = new google.visualization.arrayToDataTable(${str});
+
+		var options = {
+			title : '라인차트 DB연동',
+			legend : {
+				position : 'bottom'
+			}
+		};
+
+		var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+		chart.draw(data, options);
+	}
+</script>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">
@@ -35,34 +74,7 @@
 		</div>
 	</div>
 
-<script type="text/javascript">
 
-	// 구글 api사용을 위한 기본 세팅
-	google.charts.load('current', {	'packages' : [ 'corechart' ]});
-	google.charts.setOnLoadCallback(drawChart);
-		
-	function drawChart() {
-		
-		var data = google.visualization.arrayToDataTable([
-				[ '날짜', 'Direct', 'Others' ],
-				[ '1월10일', 8, 3 ],
-				[ '1월10일', 8, 2 ],
-				[ '1월10일', 5, 3 ]
-				]);
-
-		var options = {
-			title : '라인차트 DB연동',
-			legend : {
-				position : 'bottom'
-			}
-		};
-
-		var chart = new google.visualization.LineChart(document
-				.getElementById('chart_div'));
-
-		chart.draw(data, options);
-	}
-</script>
 </body>
 
 </html>
