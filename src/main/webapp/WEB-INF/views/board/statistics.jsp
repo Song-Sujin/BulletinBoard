@@ -59,14 +59,14 @@
 						<br />
 						<h4>구글 차트 이용하기</h4>
 						<a href="${pageContext.request.contextPath }/board/google_column.do">1. 한 페이지에 차트 두개(파이, 컬럼)</a><br />
-						<a href="${pageContext.request.contextPath }/board/google_line.do">2. 라인 차트</a><br />
+						<a href="${pageContext.request.contextPath }/board/google_line.do">2. 라인 차트(DB연동)</a><br />
 						<a href="${pageContext.request.contextPath }/board/google_pi.do">2. 파이 차트</a><br />
 						<a href="${pageContext.request.contextPath }/board/google_scatter.do">3. 선점도 차트</a><br />
 						
 						<br />
-						<h4>C3.js 이용하기</h4>
-						<a href="${pageContext.request.contextPath }/board/c3_line.do">1. 라인 차트</a><br />
-						<a href="${pageContext.request.contextPath }/board/c3_pi.do">2. </a><br />
+						<h4>Chart.js 이용하기</h4>
+						<a href="${pageContext.request.contextPath }/board/chartjs_line.do">1. 라인 차트</a><br />
+						<a href="${pageContext.request.contextPath }/board/chartjs_combo.do">2. 콤보 차트</a><br />
 						<a href="${pageContext.request.contextPath }/board/c3_scatter.do">3. </a><br />
 					</div>
 					<div class="col-md-2"></div>

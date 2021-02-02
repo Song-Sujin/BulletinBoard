@@ -328,11 +328,19 @@ public class BoardController
 		return new ModelAndView("board/google_scatter");
 	}
 
-	// ----------- c3.js 추가 ------------
-	@RequestMapping(value="/board/c3_line.do", method=RequestMethod.GET)
-	public ModelAndView c3_line(Model model)
+	// ----------- Chart.js 추가 ------------
+	// 라인 차트
+	@RequestMapping(value="/board/chartjs_line.do", method=RequestMethod.GET)
+	public ModelAndView chartjs_line(Model model)
 	{
-		return new ModelAndView("board/c3_line");
+		return new ModelAndView("board/chartjs_line");
+	}
+	
+	// 콤보 차트
+	@RequestMapping(value="/board/chartjs_combo.do", method=RequestMethod.GET)
+	public ModelAndView chartjs_combo(Model model)
+	{
+		return new ModelAndView("board/chartjs_combo");
 	}
 	
 
