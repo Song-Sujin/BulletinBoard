@@ -110,6 +110,11 @@ UPDATE TBL_BOARD
 SET TITLE = '', CONTENT = '', WRITER = ''
 WHERE NO = 14;
 
+-- 게시글 조회시 조회수 올라가기
+UPDATE TBL_BOARD
+SET HITS = 2
+WHERE NO = 19;
+
 ------------------------------------------------------------------------------
 
 -- 차트 추가
