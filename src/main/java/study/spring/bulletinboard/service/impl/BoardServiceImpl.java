@@ -54,7 +54,11 @@ public class BoardServiceImpl implements BoardService
 		
 		try
 		{
+			// 선택한 게시글정보 불러오기
 			result = sqlSession.selectOne("BoardMapper.selectItem", input);
+			
+			// 해당 게시글의 조회수 올리기
+			
 			
 			if(result == null)
 			{

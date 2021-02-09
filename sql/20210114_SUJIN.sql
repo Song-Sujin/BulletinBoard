@@ -1,5 +1,6 @@
 SELECT USER
 FROM DUAL;
+-- SUJIN
 
 -- 게시판 만들기
 
