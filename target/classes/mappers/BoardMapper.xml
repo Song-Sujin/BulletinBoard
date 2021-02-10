@@ -89,7 +89,7 @@
 	</select>
 	
 	<!-- 게시글 조회시 조회수 올라가기 -->
-	<update id="updateItem" parameterType="study.spring.bulletinboard.model.Board">
+	<update id="updateHitsItem" parameterType="study.spring.bulletinboard.model.Board">
 		UPDATE TBL_BOARD
 		SET HITS = #{hits}
 		WHERE NO = #{no}

@@ -57,13 +57,18 @@ public class BoardServiceImpl implements BoardService
 			// 선택한 게시글정보 불러오기
 			result = sqlSession.selectOne("BoardMapper.selectItem", input);
 			
-			// 해당 게시글의 조회수 올리기
-			
-			
 			if(result == null)
 			{
 				throw new NullPointerException("result=null");
 			}
+			
+			// 해당 게시글의 조회수 올리기
+			int hits = result.getHits();
+			System.out.println(hits + "serviceimpl");
+			hits++;
+			input.setHits(hits);
+			
+			sqlSession.update("BoardMapper.updateHitsItem", input);
 			
 		} catch (NullPointerException e)
 		{

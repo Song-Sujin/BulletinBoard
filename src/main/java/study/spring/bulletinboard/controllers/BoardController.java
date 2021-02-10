@@ -86,19 +86,24 @@ public class BoardController
 		// 데이터 조회
 		Board input = new Board();
 		input.setNo(no);
+		System.out.println(input.getNo() + "controller");
 		
 		Board output = null;
 		
 		try
 		{
 			output = boardService.getBoardItem(input);
+			System.out.println(output.getHits() + "controller");
+			
 		} catch (Exception e)
 		{
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
 		// View 처리
+		System.out.println(output.getHits() + "모델넣기전");
 		model.addAttribute("output", output);
+		System.out.println(output.getHits() + "모델넣은후");
 		return new ModelAndView("board/view");
 	}
 	
