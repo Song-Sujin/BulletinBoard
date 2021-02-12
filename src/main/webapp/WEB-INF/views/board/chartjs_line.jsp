@@ -52,7 +52,9 @@
 	    },
 	
 	    // Configuration options go here
-	    options: {}
+	    options: {
+	    		    	
+	    }
 	});
 </script>
 </body>

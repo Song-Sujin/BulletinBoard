@@ -191,10 +191,7 @@ public class BoardServiceImpl implements BoardService
 		
 		try
 		{
-			System.out.println(1111111111);
 			result = sqlSession.selectList("BoardMapper.selectLine");
-			System.out.println(222222222);
-			
 			
 			if(result == null)
 			{

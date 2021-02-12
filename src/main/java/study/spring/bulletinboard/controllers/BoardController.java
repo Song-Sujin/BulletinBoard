@@ -1,8 +1,7 @@
 package study.spring.bulletinboard.controllers;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.google.gson.Gson;
 
 import study.spring.bulletinboard.helper.RegexHelper;
 import study.spring.bulletinboard.helper.WebHelper;
@@ -336,9 +337,12 @@ public class BoardController
 	// ----------- Chart.js 추가 ------------
 	// 라인 차트
 	@RequestMapping(value="/board/chartjs_line.do", method=RequestMethod.GET)
-	public ModelAndView chartjs_line(Model model)
+	public @ResponseBody String chartjs_line(Locale locale, Model model)
 	{
-		return new ModelAndView("board/chartjs_line");
+		Gson gson = new Gson();
+		
+		
+		return "";
 	}
 	
 	// 콤보 차트
